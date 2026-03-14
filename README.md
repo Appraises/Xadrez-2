@@ -188,39 +188,6 @@ Agora, uma vez comentadas as funções principais do nosso controller que gerenc
 
 - `getPecasNoTabuleiro()`: Função *getter* que retorna todas as peças que estão no tabuleiro, importante para a criação do array de modos do bobo.
 
-# ☕ Java vs. 📜 JavaScript: Uma Análise Comparativa do Projeto
-Embora a lógica e as regras do "Xadrez 2" sejam as mesmas em ambas as versões do projeto, a implementação em Java (com JavaFX) e em JavaScript (para a web) revela diferenças fundamentais na filosofia das linguagens e seus ecossistemas, especialmente na aplicação dos pilares da Programação Orientada a Objetos.
-
-A principal distinção pode ser resumida em: Segurança em Tempo de Compilação (Java) vs. Flexibilidade em Tempo de Execução (JavaScript).
-
-## Herança: Contrato vs. Comportamento
-A base do projeto é uma classe Peca da qual todas as outras peças herdam.
-
-- Em Java: Foi utilizada uma abstract class Peca. A palavra-chave abstract funciona como um contrato forçado pelo compilador. Ela garante, antes mesmo de o programa rodar, que é impossível criar uma "Peça" genérica e obriga que toda subclasse (como Rei ou Templario) implemente o método isMovimentoValido.
-
-- Em JavaScript: A sintaxe de herança é visualmente similar (class Rei extends Peca), mas não existe o conceito de abstract nativamente. Para garantir que as subclasses implementem os métodos necessários, a prática comum é lançar um erro no método da classe mãe. Isso transfere a responsabilidade do compilador para o tempo de execução (runtime).
-
-## Polimorfismo: O Impacto da Tipagem
-O polimorfismo se manifesta de maneiras muito distintas devido à diferença fundamental entre tipagem estática e dinâmica.
-
-Coerção (Casting):
-
-- Em Java: Foi essencial usar o casting explícito: BoboDaCorte bobo = (BoboDaCorte) pecaSelecionada;. Devido à tipagem estática, o compilador só "enxerga" o tipo da variável (Peca) e precisa ser instruído a tratá-la como sua subclasse para acessar métodos específicos.
-
-- Em JavaScript: Este conceito é praticamente inexistente. Com a tipagem dinâmica, um objeto é o que ele é. A variável guarda o objeto BoboDaCorte completo, e podemos chamar seus métodos diretamente, geralmente após uma verificação com instanceof, sem necessidade de "converter" o tipo
-
-## Encapsulamento: Privacidade Real vs. Convenções
-
-- Em Java: O acesso é rigorosamente controlado pelas palavras-chave private, protected e public. É um pilar reforçado pela própria linguagem, garantindo que o estado interno dos objetos seja protegido.
-
-- Em JavaScript: Historicamente, a privacidade era mantida por convenção, usando um underscore (_) para sinalizar que uma propriedade não deveria ser acessada de fora. Versões modernas da linguagem introduziram propriedades verdadeiramente privadas com o uso do # (cerquilha), tornando o encapsulamento em JS muito mais próximo do que se vê em Java.
-
-## O que podemos tirar dessa comparação
-
-Em suma, a jornada de transpor o Xadrez 2 de Java para JavaScript é uma lição prática sobre as filosofias contrastantes dessas duas poderosas linguagens.
-
-  No ambiente Java, o desenvolvimento é guiado pela segurança e previsibilidade do compilador, que age como um assistente rigoroso, prevenindo erros de tipo e contrato antes que o jogo sequer seja executado. O resultado é uma aplicação robusta, uma verdadeira "fortaleza" de código onde cada peça tem seu lugar bem definido. Em contrapartida, o desenvolvimento em JavaScript oferece uma flexibilidade e velocidade maiores. A responsabilidade pela integridade dos dados e pela correta interação entre os objetos é transferida do compilador para o desenvolvedor, exigindo uma atenção maior aos testes e ao comportamento em tempo de execução. Podemos inferir que nenhuma abordagem é inerentemente superior. A escolha entre a fortaleza segura do Java e a flexibilidade do JavaScript depende inteiramente dos objetivos do projeto e do ambiente em que ele irá viver, seja em um aplicativo desktop contido ou na vastidão universal da web.
-
   # Conclusão 
 
   O desenvolvimento do Xadrez 2 foi uma jornada de aprendizado imensamente engrandecedora. Mais do que apenas um projeto técnico, foi a oportunidade de transformar conceitos teóricos da Programação Orientada a Objetos em uma aplicação interativa e funcional. A complexidade de modelar um sistema como o xadrez, com suas inúmeras regras e interações, solidificou de forma prática nosso entendimento sobre herança, polimorfismo e encapsulamento.
